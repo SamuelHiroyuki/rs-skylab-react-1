@@ -1,11 +1,11 @@
 import React from "react";
 
+import TechList from "./components/TechList";
+
 import "./App.css";
 
-import beholder_image from "./assets/images/beholder.jpg";
-
 function App() {
-	return <img src={beholder_image} alt="" />;
+	return <TechList />;
 }
 
 export default App;
