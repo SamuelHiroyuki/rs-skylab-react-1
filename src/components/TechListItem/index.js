@@ -1,6 +1,7 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
-export default function TechListItem({ tech, onDelete }) {
+function TechListItem({ tech, onDelete }) {
 	return (
 		<li>
 			<span>{tech}</span>
@@ -10,3 +11,14 @@ export default function TechListItem({ tech, onDelete }) {
 		</li>
 	);
 }
+
+TechListItem.defaultProps = {
+	tech: "Set tech property"
+};
+
+TechListItem.propTypes = {
+	tech: PropTypes.string,
+	onDelete: PropTypes.func.isRequired
+};
+
+export default TechListItem;

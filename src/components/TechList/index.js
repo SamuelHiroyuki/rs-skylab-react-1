@@ -3,6 +3,9 @@ import React, { Component } from "react";
 import TechListItem from "../TechListItem";
 
 class TechList extends Component {
+	// static defaultProps = {}; // defaultProps - class
+	// static propTypes = {}; // propTypes - class
+
 	state = {
 		inputValue: "",
 		techs: ["Node.js", "ReactJS", "React Native"]
@@ -40,6 +43,7 @@ class TechList extends Component {
 				<button type="submit">Adicionar</button>
 
 				<ul>
+					<TechListItem />
 					{this.state.techs.map(t => (
 						<TechListItem
 							tech={t}
