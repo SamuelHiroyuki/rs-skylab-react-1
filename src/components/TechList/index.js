@@ -7,9 +7,26 @@ class TechList extends Component {
 	// static propTypes = {}; // propTypes - class
 
 	state = {
-		inputValue: "",
-		techs: ["Node.js", "ReactJS", "React Native"]
+		techs: [],
+		inputValue: ""
 	};
+
+	componentDidMount() {
+		const techs = JSON.parse(localStorage.getItem("@React:techs"));
+
+		if (techs) {
+			this.setState({ techs });
+		}
+	}
+
+	componentDidUpdate(_, prevState) {
+		if (prevState.techs !== this.state.techs) {
+			localStorage.setItem(
+				"@React:techs",
+				JSON.stringify(this.state.techs)
+			);
+		}
+	}
 
 	handleInputChange = ({ target: { value: inputValue } }) => {
 		this.setState({ inputValue });
@@ -31,7 +48,7 @@ class TechList extends Component {
 	};
 
 	render() {
-		const { inputValue } = this.state;
+		const { inputValue, techs } = this.state;
 
 		return (
 			<form onSubmit={this.handleInputSubmit}>
@@ -42,16 +59,18 @@ class TechList extends Component {
 				/>
 				<button type="submit">Adicionar</button>
 
-				<ul>
-					<TechListItem />
-					{this.state.techs.map(t => (
-						<TechListItem
-							tech={t}
-							key={t}
-							onDelete={() => this.handleDelete(t)}
-						/>
-					))}
-				</ul>
+				{techs && (
+					<ul>
+						{/* <TechListItem /> */}
+						{techs.map(t => (
+							<TechListItem
+								tech={t}
+								key={t}
+								onDelete={() => this.handleDelete(t)}
+							/>
+						))}
+					</ul>
+				)}
 			</form>
 		);
 	}
