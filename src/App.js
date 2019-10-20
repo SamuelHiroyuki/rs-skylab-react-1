@@ -2,8 +2,10 @@ import React from "react";
 
 import "./App.css";
 
+import beholder_image from "./assets/images/beholder.jpg";
+
 function App() {
-	return <h1>Here we go again...</h1>;
+	return <img src={beholder_image} alt="" />;
 }
 
 export default App;
